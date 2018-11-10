@@ -1,21 +1,4 @@
-// import axios from 'axios'
-
-export default {
-  generate: {
-    routes: function () {
-      return ['/blog/first-post', '/blog/second-post'];
-      // return axios.get('https://my-api/users')
-      // .then((res) => {
-      //   return res.data.map((post) => {
-      //     return {
-      //       route: '/blog/' + user.id,
-      //       payload: post
-      //     }
-      //   })
-      // })
-    }
-  }
-}
+import gql from "graphql-tag";
 
 module.exports = {
   /*
@@ -51,7 +34,20 @@ module.exports = {
   apollo: {
     clientConfigs: {
       default: '~/plugins/dato-cms-apollo-config.js'
-    }
+    },
+    allRoutes: gql`
+      {
+        allPosts {
+          slug
+        }
+      }
+    `
+  },
+
+  generate: {
+    routes: [
+      '/blog/first-post/', '/blog/second-post/'
+    ]
   }
 
 }
