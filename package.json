@@ -9,7 +9,7 @@
     "@nuxtjs/pwa": "latest",
     "@vue/cli-shared-utils": "^3.0.0",
     "apollo-fetch": "^0.7.0",
-    "graphql": "^0.13.1",
+    "graphql": "^0.13.2",
     "graphql-tag": "^2.10.0",
     "nuxt": "latest",
     "nuxt-purgecss": "0.0.2"
