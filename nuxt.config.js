@@ -1,3 +1,22 @@
+// import axios from 'axios'
+
+export default {
+  generate: {
+    routes: function () {
+      return ['/blog/first-post', '/blog/second-post'];
+      // return axios.get('https://my-api/users')
+      // .then((res) => {
+      //   return res.data.map((post) => {
+      //     return {
+      //       route: '/blog/' + user.id,
+      //       payload: post
+      //     }
+      //   })
+      // })
+    }
+  }
+}
+
 module.exports = {
   /*
   ** Build configuration
