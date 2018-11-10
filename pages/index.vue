@@ -20,15 +20,17 @@
 </template>
 
 <script>
-// import Logo from "~/components/YourCustomComponent.vue";
+// import CustomComponent from "~/components/YourCustomComponent.vue";
 
 export default {
-  // components: { Logo },
+  // customComponent: { CustomComponent },
+
   data() {
     return {
       online: true
     };
   },
+
   mounted() {
     if (!window.navigator) {
       this.online = false;
@@ -38,11 +40,13 @@ export default {
     window.addEventListener("offline", this._toggleNetworkStatus);
     window.addEventListener("online", this._toggleNetworkStatus);
   },
+
   methods: {
     _toggleNetworkStatus({ type }) {
       this.online = type === "online";
     }
   },
+
   destroyed() {
     window.removeEventListener("offline", this._toggleNetworkStatus);
     window.removeEventListener("online", this._toggleNetworkStatus);

@@ -1,53 +1,62 @@
 import gql from "graphql-tag";
 
 module.exports = {
-  /*
-  ** Build configuration
-  */
+
   build: {
-    // turn it on to execute: npm run build -a
+    // npm run build -a
     analyze: false
   },
-  /*
-  ** Headers
-  ** Common headers are already provided by @nuxtjs/pwa preset
-  */
-  head: {},
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#3B8070' },
-  /*
-  ** Customize app manifest
-  */
-  manifest: {
-    theme_color: '#3B8070'
-  },
-  /*
-  ** Modules
-  */
+
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/apollo'
   ],
 
+  // common headers are already provided by @nuxtjs/pwa preset
+  head: {},  
+
+  // progress-bar color
+  loading: { color: '#3B8070' },
+  
+  // api manifest
+  manifest: {
+    theme_color: '#3B8070'
+  },
+
+  css: [
+    '~/assets/main.css'
+  ],
+
+  router: {
+    middleware: 'logs'
+  },
+  
+  // auth and routes 
   apollo: {
     clientConfigs: {
       default: '~/plugins/dato-cms-apollo-config.js'
     },
     allRoutes: gql`
-      {
-        allPosts {
-          slug
+        {
+          allPosts {
+            slug
+          }
         }
-      }
-    `
+      `
   },
 
+  // for static serverless deployment routes creation
   generate: {
-    routes: [
-      '/blog/first-post/', '/blog/second-post/'
-    ]
+    routes: function () {
+      return ['/blog/first-post', '/blog/second-post'];
+      // return module.exports.allRoutes.data.allPosts.map((post) => {
+      //   return {
+      //     route: '/blog/' + post.slug,
+      //     payload: post
+      //   }
+      // })
+    },
+    subFolders: false
   }
 
 }

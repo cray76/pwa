@@ -1,12 +1,17 @@
-<template>
+<template>    
+  <section class="container">
     <div>
-         <h1 class="title">
-             {{post.title}}
-         </h1>
+      <nuxt-link :to="'/blog'" class="button--grey">
+            POSTS
+      </nuxt-link>
+      <div class="button--green">
+        <b> {{post.title}} </b>         
         <p>
             {{post.text}}
         </p>
+      </div>  
     </div>    
+  </section>
 </template>
 
 <script>

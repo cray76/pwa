@@ -1,17 +1,17 @@
 <template>
   <section class="container">
     <div>
+        <nuxt-link :to="'/'" class="button--grey">
+            BACK
+        </nuxt-link>  
       <ul>
         <li
           v-for="(post, index) in allPosts"
           :key="index"
         >
-          <h2 class="subtitle">
-            <nuxt-link :to="`/blog/${post.slug}`">
+            <nuxt-link :to="`/blog/${post.slug}`" class="button--green">
               {{ post.title }}
             </nuxt-link>  
-          </h2>
-          <p>{{post.text}}</p>  
         </li>
       </ul>
     </div>
@@ -43,5 +43,9 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+ul {
+  list-style-type: none;
 }
 </style>
