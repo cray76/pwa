@@ -1,4 +1,3 @@
-import gql from "graphql-tag";
 import axios from 'axios'
 
 export default {
@@ -42,38 +41,28 @@ export default {
     }
   },
 
-  nuxtServerInit (store, context) {
-    let client = context.app.apolloProvider.defaultClient
-    console.log("client: " + client);
-  },
-
   // for static serverless deployment routes creation
   generate: {
-    routes: function (callback) {
-
-      var allRoutes = ['/blog/first-post'];
+    routes: function () {
 
       var postData = { "query": "query { allPosts { slug } }" };
       let axiosConfig = {
         headers: {
-            "Authorization" : "94fb2ed33883640b8c75ba3b7ddf13",
-            "Content-Type" : "application/json",
-            "Accept" : "application/json",
-            "Access-Control-Allow-Origin": "*"
+          "Authorization": "94fb2ed33883640b8c75ba3b7ddf13",
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          "Access-Control-Allow-Origin": "*"
         }
       };
-      axios.post('https://graphql.datocms.com', postData, axiosConfig)
-      .then((result => {
-        allRoutes = result.data.data.allPosts.map((post) => {
-          return {
-            route: '/blog/' + post.slug,
-            payload: post
-          }
+      return axios.post('https://graphql.datocms.com', postData, axiosConfig)
+        .then((res) => {
+          return res.data.data.allPosts.map((post) => {
+            return '/blog/' + post.slug;
+          });
         })
-      }))
-      .catch(error => console.error(error));
-
-      return allRoutes;
+        .catch((error) => {
+          console.log(error);
+        });
     },
     subFolders: false
   }
