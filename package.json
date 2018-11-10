@@ -5,7 +5,11 @@
   "author": "cray76@gmail.com",
   "private": true,
   "dependencies": {
+    "@nuxtjs/apollo": "^4.0.0-rc2.3",
     "@nuxtjs/pwa": "latest",
+    "@vue/cli-shared-utils": "^3.0.0",
+    "graphql": "^0.13.1",
+    "graphql-tag": "^2.10.0",
     "nuxt": "latest",
     "nuxt-purgecss": "0.0.2"
   },

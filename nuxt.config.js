@@ -25,7 +25,14 @@ module.exports = {
   ** Modules
   */
   modules: [
-    '@nuxtjs/pwa'
-  ]
+    '@nuxtjs/pwa',
+    '@nuxtjs/apollo'
+  ],
+
+  apollo: {
+    clientConfigs: {
+      default: '~/plugins/dato-cms-apollo-config.js'
+    }
+  }
 
 }
