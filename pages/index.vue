@@ -1,53 +1,29 @@
 <template>
   <section class="container">
     <div>
-      <!-- <logo/> -->
+
       <h1 class="title">
         NUXT PWA CORE
       </h1>
       <div :class="['network',online ? 'online' : 'offline']">
         <div class="circle"></div>
-        {{ online ? 'online' : 'offline' }}
       </div>
+        {{ online ? 'online' : 'offline' }}
 
-      <ul>
-        <li
-          v-for="(post, index) in allPosts"
-          :key="index"
-        >
-          <h2 class="subtitle">
-            <nuxt-link :to="`/blog/${post.slug}`">
-              {{ post.title }}
-            </nuxt-link>  
-          </h2>
-          <p>{{post.text}}</p>  
-        </li>
-      </ul>
-      <!--div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green" rel="noopener">Documentation</a>
-        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey" rel="noopener">GitHub</a>
-      </div-->
+      <div class="links">
+        <nuxt-link :to="'/blog'" class="button--grey">
+            POSTS
+        </nuxt-link>  
+      </div>
     </div>
   </section>
 </template>
 
 <script>
-import Logo from "~/components/Logo.vue";
-import gql from "graphql-tag";
+// import Logo from "~/components/YourCustomComponent.vue";
 
 export default {
-  components: { Logo },
-  apollo: {
-    allPosts: gql`
-      {
-        allPosts {
-          title
-          text
-          slug
-        }
-      }
-    `
-  },
+  // components: { Logo },
   data() {
     return {
       online: true
@@ -87,8 +63,6 @@ export default {
   font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
   display: block;
-  font-weight: 300;
-  font-size: 100px;
   color: #35495e;
   letter-spacing: 1px;
 }
