@@ -55,6 +55,8 @@ export default {
 </script>
 
 <style>
+/* 
+
 .container {
   min-height: 100vh;
   display: flex;
@@ -65,7 +67,7 @@ export default {
 
 .title {
   font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
   display: block;
   color: #35495e;
   letter-spacing: 1px;
@@ -100,4 +102,6 @@ export default {
 .network.offline .circle {
   background: red;
 }
-</style>
+
+*/
+</style> 
