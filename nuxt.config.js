@@ -1,5 +1,4 @@
-import axios from 'axios'
-
+import { HTTP } from "./plugins/http-common";
 export default {
 
   build: {
@@ -8,8 +7,8 @@ export default {
   },
 
   modules: [
-    '@nuxtjs/pwa',
-    '@nuxtjs/apollo'
+    '@nuxtjs/pwa'
+    // '@nuxtjs/bulma'    
   ],
 
   // common headers are already provided by @nuxtjs/pwa preset
@@ -31,38 +30,20 @@ export default {
     middleware: 'logs'
   },
 
-  // auth and routes 
-  apollo: {
-    clientConfigs: {
-      default: '~/plugins/dato-cms-apollo-config.js'
-    },
-    errorHandler(error) {
-      console.log('%cError', 'background: red; color: white; padding: 2px 4px; border-radius: 3px; font-weight: bold;', error.message)
-    }
-  },
-
   // for static serverless deployment routes creation
   generate: {
     routes: function () {
 
-      var postData = { "query": "query { allPosts { slug } }" };
-      let axiosConfig = {
-        headers: {
-          "Authorization": "94fb2ed33883640b8c75ba3b7ddf13",
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-          "Access-Control-Allow-Origin": "*"
-        }
-      };
-      return axios.post('https://graphql.datocms.com', postData, axiosConfig)
-        .then((res) => {
-          return res.data.data.allPosts.map((post) => {
-            return '/blog/' + post.slug;
-          });
+      return HTTP.post("", { "query": "query { allPosts { slug } }" })
+        .then(res => {
+          return res.data.data.allPosts.map(post => {
+            return {
+              route: '/blog/' + post.slug,
+              payload: post
+            }
+          })
         })
-        .catch((error) => {
-          console.log(error);
-        });
+
     },
     subFolders: false
   }

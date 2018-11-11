@@ -6,7 +6,7 @@
         </nuxt-link>  
       <ul>
         <li
-          v-for="(post, index) in allPosts"
+          v-for="(post, index) in posts"
           :key="index"
         >
             <nuxt-link :to="`/blog/${post.slug}`" class="button--green">
@@ -19,33 +19,21 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
-
+import { HTTP } from "./../../plugins/http-common";
 export default {
-  apollo: {
-    allPosts: gql`
-      {
-        allPosts {
-          title
-          text
-          slug
-        }
+  async asyncData({ params, error, payload }) {
+    return { payload: [] };
+  },
+
+  created() {
+    HTTP.post("", { query: "query { allPosts { title text slug } }" }).then(
+      res => {
+        this.posts = res.data.data.allPosts;
       }
-    `
+    );
   }
 };
 </script>
 
 <style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-ul {
-  list-style-type: none;
-}
 </style>

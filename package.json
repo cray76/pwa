@@ -5,12 +5,10 @@
   "author": "cray76@gmail.com",
   "private": true,
   "dependencies": {
-    "@nuxtjs/apollo": "^4.0.0-rc2.3",
+    "@nuxtjs/bulma": "^1.2.1",
+    "@nuxtjs/dotenv": "^1.3.0",
     "@nuxtjs/pwa": "latest",
-    "@vue/cli-shared-utils": "^3.1.1",
     "axios": "^0.18.0",
-    "graphql": "^0.13.2",
-    "graphql-tag": "^2.10.0",
     "nuxt": "latest",
     "nuxt-purgecss": "0.0.2"
   },
