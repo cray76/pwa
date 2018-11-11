@@ -1,22 +1,32 @@
 <template>
-  <section class="container">
-    <div>
+    <section class="hero is-medium is-primary is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column">
+                        <div>
+                            <div class="column">
+                                <h1 class="title">
+                                    CRAY76 PWA CORE
+                                </h1>
+                                <div :class="['network',online ? 'online' : 'offline']">
+                                    <div class="circle"></div>
+                                </div>
+                                {{ online ? 'online' : 'offline' }}
 
-      <h1 class="title">
-        NUXT PWA CORE
-      </h1>
-      <div :class="['network',online ? 'online' : 'offline']">
-        <div class="circle"></div>
-      </div>
-        {{ online ? 'online' : 'offline' }}
-
-      <div class="links">
-        <nuxt-link :to="'/blog'" class="button--grey">
-            POSTS
-        </nuxt-link>  
-      </div>
-    </div>
-  </section>
+                                <div class="links">
+                                    <nuxt-link :to="'/blog'" :class="['button']">
+                                        BLOG
+                                    </nuxt-link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
@@ -55,53 +65,4 @@ export default {
 </script>
 
 <style>
-/* 
-
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
-  display: block;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-
-.network {
-  font-weight: 400;
-  font-size: 1rem;
-}
-
-.network .circle {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  background: green;
-  padding: 0.1rem 0.5rem;
-  border-radius: 1rem;
-}
-
-.network.offline .circle {
-  background: red;
-}
-
-*/
 </style> 

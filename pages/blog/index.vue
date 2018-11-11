@@ -1,21 +1,48 @@
 <template>
-  <section class="container">
-    <div>
-        <nuxt-link :to="'/'" class="button--grey">
-            BACK
-        </nuxt-link>  
-      <ul>
-        <li
-          v-for="(post, index) in posts"
-          :key="index"
-        >
-            <nuxt-link :to="`/blog/${post.slug}`" class="button--green">
-              {{ post.title }}
-            </nuxt-link>  
-        </li>
-      </ul>
-    </div>
-  </section>
+    <section class="hero is-medium is-primary is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column">
+                        <div>
+                            <div class="column">
+
+                                <div class="links">
+                                    <nuxt-link :to="'/'" :class="['button']">
+                                        HOME
+                                    </nuxt-link>
+                                </div>
+
+                                <ul>
+                                    <li v-for="(post, index) in posts" :key="index" class="subtitle">
+
+                                        <div class="card has-background-grey-light">
+                                            <div class="card-content">
+                                                <div class="media">
+                                                    <div class="media-left">
+
+                                                    </div>
+                                                    <nuxt-link :to="`/blog/${post.slug}`">
+                                                        <div class="media-content">
+                                                            <p class="title is-4">{{post.title}}</p>
+                                                            <p class="subtitle is-6">{{post.slug}}</p>
+                                                        </div>                                                        
+                                                    </nuxt-link>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>

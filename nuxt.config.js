@@ -3,7 +3,7 @@ export default {
 
   build: {
     // npm run build -a
-    analyze: true
+    analyze: false
   },
 
   modules: [
