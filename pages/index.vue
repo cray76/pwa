@@ -7,7 +7,7 @@
                         <div>
                             <div class="column">
                                 <h1 class="title">                                    
-                                    <span class="has-text-black-bis">CRAY<b>76</b></span><span class="has-text-white-bis">PWA</span>
+                                    <nobr><span class="has-text-black-bis">CRAY<b>76</b></span><span class="has-text-white-bis">PWA</span></nobr>
                                 </h1>
                                 <div :class="['network',online ? 'online' : 'offline']">
                                     <div class="circle"></div>
