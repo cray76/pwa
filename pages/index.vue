@@ -30,39 +30,39 @@
 </template>
 
 <script>
-// import CustomComponent from "~/components/YourCustomComponent.vue";
+    // import CustomComponent from "~/components/YourCustomComponent.vue";
 
-export default {
-  // customComponent: { CustomComponent },
+    export default {
+        // customComponent: { CustomComponent },
 
-  data() {
-    return {
-      online: true
+        data() {
+            return {
+                online: true
+            };
+        },
+
+        mounted() {
+            if (!window.navigator) {
+                this.online = false;
+                return;
+            }
+            this.online = Boolean(window.navigator.onLine);
+            window.addEventListener("offline", this._toggleNetworkStatus);
+            window.addEventListener("online", this._toggleNetworkStatus);
+        },
+
+        methods: {
+            _toggleNetworkStatus({ type }) {
+                this.online = type === "online";
+            }
+        },
+
+        destroyed() {
+            window.removeEventListener("offline", this._toggleNetworkStatus);
+            window.removeEventListener("online", this._toggleNetworkStatus);
+        }
     };
-  },
-
-  mounted() {
-    if (!window.navigator) {
-      this.online = false;
-      return;
-    }
-    this.online = Boolean(window.navigator.onLine);
-    window.addEventListener("offline", this._toggleNetworkStatus);
-    window.addEventListener("online", this._toggleNetworkStatus);
-  },
-
-  methods: {
-    _toggleNetworkStatus({ type }) {
-      this.online = type === "online";
-    }
-  },
-
-  destroyed() {
-    window.removeEventListener("offline", this._toggleNetworkStatus);
-    window.removeEventListener("online", this._toggleNetworkStatus);
-  }
-};
 </script>
 
 <style>
-</style> 
+</style>

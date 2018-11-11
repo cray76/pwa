@@ -8,7 +8,8 @@ export default {
 
   modules: [
     '@nuxtjs/pwa',
-    '@nuxtjs/bulma'    
+    '@nuxtjs/bulma'
+    // 'nuxt-bulma-slim'
   ],
 
   // common headers are already provided by @nuxtjs/pwa preset

@@ -1,33 +1,30 @@
 <template>
     <section class="hero is-medium is-primary is-bold">
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns">
-                    <div class="column">
+        <div class="container">
+            <div class="tile is-ancestor is-vertical">
 
-                        <div class="links">
-                            <nuxt-link :to="'/blog'" :class="['button']">
-                                BLOG
-                            </nuxt-link>
-                        </div>
-                        <div class="card has-background-grey-light">
-                            <div class="card-content">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <figure class="image is-128x128">
-                                            <img src="https://source.unsplash.com/random/128x128" alt="Placeholder image">
-                                        </figure>
-                                    </div>
-                                    <div class="media-content">
-                                        <h1 class="has-text-black is-size-2 is-4">{{post.title}}</h1>
-                                        <h2 class="has-text-black is-size-6 is-6">{{post.slug}}</h2>
-                                    </div>
-                                </div>
-                                <div class="content is-size-4 has-text-black">
-                                    {{post.text}}
-                                </div>
-                            </div>
-                        </div>
+                <div class="tile is-child is-2">
+                    <div class="links">
+                        <nuxt-link :to="'/blog'" :class="['button']">
+                            BLOG
+                        </nuxt-link>
+                    </div>
+                </div>
+
+                <div class="tile is-parent is-horizontal">
+                    <div class="tile is-child notification is-info is-4">
+                        <figure class="image is-48x48">
+                            <img src="https://source.unsplash.com/random/96x96" alt="Card image">
+                        </figure>
+                    </div>
+                    <div class="tile is-child notification is-warning has-text-dark is-8">
+                        <h1 class="is-size-4">{{post.title}}</h1>
+                    </div>
+                </div>
+
+                <div class="tile is-parent">
+                    <div class="tile is-child notification has-background-grey-dark">
+                        {{post.text}}
                     </div>
                 </div>
             </div>
@@ -36,31 +33,31 @@
 </template>
 
 <script>
-import { HTTP } from "./../../plugins/http-common";
-export default {
-  data() {
-    return {
-      post: { title: "", text: "Loading..." },
-      slug: ""
+    import { HTTP } from "./../../plugins/http-common";
+    export default {
+        data() {
+            return {
+                post: { title: "", text: "Loading..." },
+                slug: ""
+            };
+        },
+
+        async asyncData({ params, error, payload }) {
+            return { slug: params.slug ? params.slug : "" };
+        },
+
+        created() {
+            HTTP.post("", {
+                query:
+                    `query { post(filter:{slug: {eq: "` +
+                    this.slug +
+                    `"}}) { title text slug } }`
+            }).then(res => {
+                this.post = res.data.data.post;
+                return this.post;
+            });
+        }
     };
-  },
-
-  async asyncData({ params, error, payload }) {
-    return { slug: params.slug ? params.slug : "" };
-  },
-
-  created() {
-    HTTP.post("", {
-      query:
-        `query { post(filter:{slug: {eq: "` +
-        this.slug +
-        `"}}) { title text slug } }`
-    }).then(res => {
-      this.post = res.data.data.post;
-      return this.post;
-    });
-  }
-};
 </script>
 
 <style>
