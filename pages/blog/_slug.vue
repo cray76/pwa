@@ -3,7 +3,7 @@
         <div class="container">
             <div class="tile is-ancestor is-vertical">
 
-                <div class="tile is-child is-2">
+                <div class="tile is-child">
                     <div class="links">
                         <nuxt-link :to="'/blog'" :class="['button']">
                             BLOG
@@ -11,21 +11,19 @@
                     </div>
                 </div>
 
-                <div class="tile is-parent is-horizontal">
-                    <div class="tile is-child notification is-info is-4">
-                        <figure class="image is-48x48">
-                            <img src="https://source.unsplash.com/random/96x96" alt="Card image">
-                        </figure>
-                    </div>
-                    <div class="tile is-child notification is-warning has-text-dark is-8">
-                        <h1 class="is-size-4">{{post.title}}</h1>
-                    </div>
+                <div class="tile is-child notification is-warning">
+
+                    <span class="is-48x48 centered">
+                        <img src="https://source.unsplash.com/random/96x96" alt="Card image">
+                    </span>
+
+                    <span class="centered has-text-dark is-size-4">
+                        {{post.title}}
+                    </span>
                 </div>
 
-                <div class="tile is-parent">
-                    <div class="tile is-child notification has-background-grey-dark">
-                        {{post.text}}
-                    </div>
+                <div class="tile is-child notification has-background-grey-dark">
+                    {{post.text}}
                 </div>
             </div>
         </div>

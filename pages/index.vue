@@ -6,8 +6,8 @@
                     <div class="column">
                         <div>
                             <div class="column">
-                                <h1 class="title">
-                                    CRAY76 PWA CORE
+                                <h1 class="title">                                    
+                                    <span class="has-text-black-bis">CRAY<b>76</b></span><span class="has-text-white-bis">PWA</span>
                                 </h1>
                                 <div :class="['network',online ? 'online' : 'offline']">
                                     <div class="circle"></div>
