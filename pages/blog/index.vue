@@ -21,8 +21,11 @@
 <script>
 import { HTTP } from "./../../plugins/http-common";
 export default {
-  async asyncData({ params, error, payload }) {
-    return { payload: [] };
+
+  data() {
+    return {
+      posts: []
+    };
   },
 
   created() {

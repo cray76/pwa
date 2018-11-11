@@ -13,14 +13,26 @@
 </template>
 
 <script>
-import { HTTP } from "../../plugins/http-common";
+import { HTTP } from "./../../plugins/http-common";
 export default {
+  data() {
+    return {
+      post: { title: "", text: "Loading..." },
+      slug: ""
+    };
+  },
+
   async asyncData({ params, error, payload }) {
-    return { post: payload ? payload : { title: "", text: "Loading..." } };
+    return { slug: params.slug ? params.slug : "" };
   },
 
   created() {
-    HTTP.post("", { query: "query { post { title text slug } }" }).then(res => {
+    HTTP.post("", {
+      query:
+        `query { post(filter:{slug: {eq: "` +
+        this.slug +
+        `"}}) { title text slug } }`
+    }).then(res => {
       this.post = res.data.data.post;
       return this.post;
     });
