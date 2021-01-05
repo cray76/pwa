@@ -7,7 +7,7 @@
   "dependencies": {
     "@nuxtjs/bulma": "^1.2.1",
     "@nuxtjs/pwa": "latest",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "nuxt": "latest",
     "nuxt-purgecss": "0.0.2"
   },
